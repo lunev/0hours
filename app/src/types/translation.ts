@@ -1,7 +1,9 @@
 export type Translation = {
-  message: {
+  text: {
     activateHint: string;
     nextChime: string;
+    quiteMode: string;
+    quietModeActive: string;
   };
   settings: {
     title: string;

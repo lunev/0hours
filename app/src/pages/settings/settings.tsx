@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
-import { DEFAULT_SETTINGS, ROUTES } from "@/config";
+import { DEFAULT_SETTINGS, languages, ROUTES } from "@/config";
 import { useSettings } from "@/hooks";
-import { translations, type Language } from "@/locales";
+import { translations } from "@/locales";
 import type { Settings as SettingsType } from "@/types";
 import { ArrowLeft, Volume2, Languages, BellOff, Play, SquareStopIcon } from "lucide-react";
 
@@ -18,8 +18,6 @@ export const Settings = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const bipRef = useRef<HTMLAudioElement | null>(null);
   const voiceRef = useRef<HTMLAudioElement | null>(null);
-
-  const languages: Language[] = ["en", "uk"];
 
   useEffect(() => {
     setLocalSettings(settings);
@@ -189,6 +187,7 @@ export const Settings = () => {
             <Input
               type="time"
               className="flex-1"
+              required
               value={localSettings.quietHours.start}
               onChange={(e) =>
                 setLocalSettings({
@@ -200,6 +199,7 @@ export const Settings = () => {
             <Input
               type="time"
               className="flex-1"
+              required
               value={localSettings.quietHours.end}
               onChange={(e) =>
                 setLocalSettings({
