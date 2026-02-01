@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "0hours",
   "version": "1.0.0",
-  "description": "Hourly Clock Sound",
+  "description": "0h. Feel the hour.",
   "author": {
     "name": "Oleksandr Lunov",
     "email": "lunevdev@gmail.com"
@@ -14,7 +14,7 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Parents Reminder",
+    "default_title": "0hours",
     "default_icon": "logo.png"
   },
   "icons": {
