@@ -1,14 +1,16 @@
 import type { Translation } from "@/types";
 
 export const uk: Translation = {
-  message: {
-    activateHint: "Натисніть для активації годинних сигналів",
+  text: {
+    activateHint: "Натисніть для активації щогодинних сповіщень",
     nextChime: "Наступне сповіщення",
+    quiteMode: "Не турбувати",
+    quietModeActive: "Не турбувати ввімкнено",
   },
   settings: {
     title: "Налаштування",
     language: "Мова",
-    quietHours: "Не сповіщати",
+    quietHours: "Не турбувати",
     muteHint: "Вимкнути сигнали у визначений час",
     theme: "Тема",
     languageLabel: "Мова",
@@ -16,7 +18,7 @@ export const uk: Translation = {
   },
   actions: {
     activate: "Активувати",
-    deactivate: "Вимкнути",
+    deactivate: "Дективувати",
     save: "Зберегти",
     cancel: "Скасувати",
     play: "Тест",

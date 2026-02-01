@@ -1,9 +1,11 @@
 import type { Translation } from "@/types";
 
 export const en: Translation = {
-  message: {
+  text: {
     activateHint: "Tap to activate hourly chimes",
     nextChime: "Next chime",
+    quiteMode: "Silence mode",
+    quietModeActive: "Silent Mode On",
   },
   settings: {
     title: "Settings",

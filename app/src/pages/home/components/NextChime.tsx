@@ -1,13 +1,19 @@
-import { translations, type Language } from '@/locales';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import { translations, type Language } from "@/locales";
 
 interface NextChimeProps {
   lang: Language;
+  isQuietTime: boolean;
 }
 
-export const NextChime: React.FC<NextChimeProps> = ({ lang }) => {
-  const [timeLeft, setTimeLeft] = useState('00:00');
-  const [nextHourLabel, setNextHourLabel] = useState('00:00');
+const localeMap: Record<Language, string> = {
+  en: "en-US",
+  uk: "uk-UA",
+};
+
+export const NextChime: React.FC<NextChimeProps> = ({ lang, isQuietTime }) => {
+  const [timeLeft, setTimeLeft] = useState("00:00");
+  const [nextHourLabel, setNextHourLabel] = useState("00:00");
 
   useEffect(() => {
     const updateTimer = () => {
@@ -16,9 +22,9 @@ export const NextChime: React.FC<NextChimeProps> = ({ lang }) => {
       const nextHour = new Date();
       nextHour.setHours(now.getHours() + 1, 0, 0, 0);
 
-      const hourLabel = nextHour.toLocaleTimeString('uk-UA', {
-        hour: '2-digit',
-        minute: '2-digit',
+      const hourLabel = nextHour.toLocaleTimeString(localeMap[lang], {
+        hour: "2-digit",
+        minute: "2-digit",
       });
       setNextHourLabel(hourLabel);
 
@@ -26,7 +32,7 @@ export const NextChime: React.FC<NextChimeProps> = ({ lang }) => {
       const minutes = Math.floor((diff / 1000 / 60) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      const display = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
       setTimeLeft(display);
     };
 
@@ -34,17 +40,25 @@ export const NextChime: React.FC<NextChimeProps> = ({ lang }) => {
     const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [lang]);
 
   return (
-    <div className='flex flex-col items-center gap-2'>
-      <span className='text-xs uppercase tracking-widest text-muted-foreground'>
-        {translations[lang].message.nextChime}
-      </span>
-      <span className='font-mono text-5xl font-light tabular-nums text-foreground'>
-        {timeLeft}
-      </span>
-      <span className='text-sm text-muted-foreground'>{nextHourLabel}</span>
+    <div className="flex flex-col items-center gap-2">
+      {isQuietTime ? (
+        <span className="text-xs uppercase tracking-widest text-muted-foreground">
+          {translations[lang].text.quietModeActive}
+        </span>
+      ) : (
+        <>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground">
+            {translations[lang].text.nextChime}
+          </span>
+          <span className="font-mono text-5xl font-light tabular-nums text-foreground">
+            {timeLeft}
+          </span>
+          <span className="text-sm text-muted-foreground">{nextHourLabel}</span>
+        </>
+      )}
     </div>
   );
 };
