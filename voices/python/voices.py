@@ -2,53 +2,44 @@ import asyncio
 import edge_tts
 import os
 
-async def generate_hours():
-    voice = "uk-UA-PolinaNeural"
-    # voice = "uk-UA-OstapNeural"
-    voice_rate = "-25%"
-    output_folder = "audio/uk"
-    
-    # Створюємо папку, якщо її немає
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-    
-    for hour in range(1, 13):
-        # Визначаємо правильне закінчення для кожної години
-        if hour == 1:
-            hour_text = "перша година"
-        elif hour == 2:
-            hour_text = "друга година"
-        elif hour == 3:
-            hour_text = "третя година"
-        elif hour == 4:
-            hour_text = "четверта година"
-        elif hour == 5:
-            hour_text = "п'ята година" # або "п'ята година"
-        elif hour == 6:
-            hour_text = "шоста година"
-        elif hour == 7:
-            hour_text = "сьома година"
-        elif hour == 8:
-            hour_text = "восьма година"
-        elif hour == 9:
-            hour_text = "дев'ята година"
-        elif hour == 10:
-            hour_text = "десята година"
-        elif hour == 11:
-            hour_text = "одинадцята година"
-        elif hour == 12:
-            hour_text = "дванадцята година"
+VOICES = {
+    "uk": "uk-UA-PolinaNeural",
+    "en": "en-US-GuyNeural"
+}
 
-        # Формуємо фінальну фразу
-        full_text = f"В Києві    {hour_text}."
+async def generate_hours():
+    base_path = os.path.join(os.path.dirname(__file__), "..", "audio")
+    voice_rate = "-25%"
+
+    uk_hours = {
+        1: "Перша година",
+        2: "Друга година",
+        3: "Третя година",
+        4: "Четверта година",
+        5: "П'ята година",
+        6: "Шоста година",
+        7: "Сьома година",
+        8: "Восьма година",
+        9: "Дев'ята година",
+        10: "Десята година",
+        11: "Одинадцята година",
+        12: "Дванадцята година"
+    }
+
+    for lang, voice in VOICES.items():
+        folder = os.path.join(base_path, lang)
+        os.makedirs(folder, exist_ok=True)
         
-        # Назва файлу буде просто числом для зручності в JS (1.mp3, 2.mp3...)
-        file_path = os.path.join(output_folder, f"{hour}.mp3")
-        
-        print(f"Генерую {hour}: {full_text}")
-        
-        communicate = edge_tts.Communicate(full_text, voice, rate=voice_rate)
-        await communicate.save(file_path)
+        for hour in range(1, 13):
+            if lang == "uk":
+                text = uk_hours[hour]
+            else:
+                text = f"{hour} o'clock"
+                
+            output = os.path.join(folder, f"{hour}.mp3")
+            
+            print(f"Saving {lang} {hour}: '{text}'...")
+            await edge_tts.Communicate(text, voice).save(output)
 
 if __name__ == "__main__":
     asyncio.run(generate_hours())
