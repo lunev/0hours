@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "0hours",
-  "version": "1.0.0",
-  "description": "0h. Feel the hour.",
+  "version": "1.0.1",
+  "description": "Hourly voice time announcements in English and Ukrainian",
   "author": {
     "name": "Oleksandr Lunov",
     "email": "lunevdev@gmail.com"
@@ -15,12 +15,12 @@
   "action": {
     "default_popup": "index.html",
     "default_title": "0hours",
-    "default_icon": "logo.png"
+    "default_icon": "icons/logo128x128.png"
   },
   "icons": {
-    "16": "logo.png",
-    "32": "logo.png",
-    "48": "logo.png",
-    "128": "logo.png"
+    "16": "icons/logo16x16.png",
+    "32": "icons/logo32x32.png",
+    "48": "icons/logo48x48.png",
+    "128": "icons/logo128x128.png"
   }
 }
