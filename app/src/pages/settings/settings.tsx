@@ -106,6 +106,7 @@ export const Settings = () => {
           <div className="flex gap-2">
             {languages.map((lang) => (
               <Button
+                size="sm"
                 key={lang}
                 type="button"
                 variant={localSettings.language === lang ? "default" : "outline"}
