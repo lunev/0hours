@@ -1,0 +1,17 @@
+{
+  "voice": "tr-TR-EmelNeural",
+  "hours": {
+    "1": "Saat bir",
+    "2": "Saat iki",
+    "3": "Saat üç",
+    "4": "Saat dört",
+    "5": "Saat beş",
+    "6": "Saat altı",
+    "7": "Saat yedi",
+    "8": "Saat sekiz",
+    "9": "Saat dokuz",
+    "10": "Saat on",
+    "11": "Saat on bir",
+    "12": "Saat on iki"
+  }
+}

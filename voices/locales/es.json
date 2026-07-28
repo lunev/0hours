@@ -1,0 +1,17 @@
+{
+  "voice": "es-ES-ElviraNeural",
+  "hours": {
+    "1": "La una",
+    "2": "Las dos",
+    "3": "Las tres",
+    "4": "Las cuatro",
+    "5": "Las cinco",
+    "6": "Las seis",
+    "7": "Las siete",
+    "8": "Las ocho",
+    "9": "Las nueve",
+    "10": "Las diez",
+    "11": "Las once",
+    "12": "Las doce"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "voice": "pl-PL-ZofiaNeural",
+  "hours": {
+    "1": "Pierwsza godzina",
+    "2": "Druga godzina",
+    "3": "Trzecia godzina",
+    "4": "Czwarta godzina",
+    "5": "Piąta godzina",
+    "6": "Szósta godzina",
+    "7": "Siódma godzina",
+    "8": "Ósma godzina",
+    "9": "Dziewiąta godzina",
+    "10": "Dziesiąta godzina",
+    "11": "Jedenasta godzina",
+    "12": "Dwunasta godzina"
+  }
+}

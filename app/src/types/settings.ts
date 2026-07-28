@@ -1,8 +1,8 @@
-import type { Language } from "@/locales";
+import type { LanguageType } from "@/config";
 
 export interface Settings {
   active: boolean;
-  language: Language;
+  language: LanguageType;
   volume: number;
   quietHours: {
     enabled: boolean;
