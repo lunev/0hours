@@ -1,0 +1,17 @@
+{
+  "voice": "pt-BR-FranciscaNeural",
+  "hours": {
+    "1": "Uma hora",
+    "2": "Duas horas",
+    "3": "Três horas",
+    "4": "Quatro horas",
+    "5": "Cinco horas",
+    "6": "Seis horas",
+    "7": "Sete horas",
+    "8": "Oito horas",
+    "9": "Nove horas",
+    "10": "Dez horas",
+    "11": "Onze horas",
+    "12": "Doze horas"
+  }
+}

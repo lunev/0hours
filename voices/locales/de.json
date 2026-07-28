@@ -1,0 +1,17 @@
+{
+  "voice": "de-DE-KatjaNeural",
+  "hours": {
+    "1": "Ein Uhr",
+    "2": "Zwei Uhr",
+    "3": "Drei Uhr",
+    "4": "Vier Uhr",
+    "5": "Fünf Uhr",
+    "6": "Sechs Uhr",
+    "7": "Sieben Uhr",
+    "8": "Acht Uhr",
+    "9": "Neun Uhr",
+    "10": "Zehn Uhr",
+    "11": "Elf Uhr",
+    "12": "Zwölf Uhr"
+  }
+}

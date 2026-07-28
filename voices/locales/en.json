@@ -1,0 +1,17 @@
+{
+  "voice": "en-US-GuyNeural",
+  "hours": {
+    "1": "One o'clock",
+    "2": "Two o'clock",
+    "3": "Three o'clock",
+    "4": "Four o'clock",
+    "5": "Five o'clock",
+    "6": "Six o'clock",
+    "7": "Seven o'clock",
+    "8": "Eight o'clock",
+    "9": "Nine o'clock",
+    "10": "Ten o'clock",
+    "11": "Eleven o'clock",
+    "12": "Twelve o'clock"
+  }
+}

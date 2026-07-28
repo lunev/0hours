@@ -1,0 +1,17 @@
+{
+  "voice": "it-IT-ElsaNeural",
+  "hours": {
+    "1": "L'una",
+    "2": "Le due",
+    "3": "Le tre",
+    "4": "Le quattro",
+    "5": "Le cinque",
+    "6": "Le sei",
+    "7": "Le sette",
+    "8": "Le otto",
+    "9": "Le nove",
+    "10": "Le dieci",
+    "11": "Le undici",
+    "12": "Mezzogiorno"
+  }
+}
