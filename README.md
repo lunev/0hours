@@ -1,6 +1,6 @@
 # 0hours
 
-A Chrome extension (Manifest V3) that announces the time every hour, in your choice of voice and language.
+A Chrome extension (Manifest V3) that announces the time every hour, in your choice of language.
 
 [Project page](https://lunevdev.com/projects/0hours)
 
@@ -15,4 +15,5 @@ A Chrome extension (Manifest V3) that announces the time every hour, in your cho
   python3 generate_audio.py            # all languages
   python3 generate_audio.py --lang pl  # a single language
   ```
-- **`design/`** — logo and Chrome Web Store promotional assets (source `.psd` files and exported `.png`s).
+- **`design/`** — logo and promotional artwork source files (`.psd`).
+- **`chrome-webstore/`** — ready-to-submit Chrome Web Store assets: exported promo images (`assets/`), listing description, and reviewer testing instructions.
