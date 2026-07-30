@@ -29,3 +29,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Style
 
 - Prettier config (`.prettierrc.json`): double quotes, `printWidth: 100`, trailing commas everywhere, 2-space indent.
+
+## UX/Design conventions
+
+- The popup is narrow (`min-w-100` = 400px, see `src/assets/index.css`) and has no fixed height — settings cards should stay compact; prefer collapsing/hiding inactive sections over always-rendering grayed-out controls.
+- Icon-only buttons (e.g. play/stop, back arrow) must carry both `title` and `aria-label` since there's no visible text fallback.
+- Settings cards follow a consistent shape: `bg-card p-4 rounded-xl border border-border/40`, with an uppercase `text-[10px] tracking-widest font-bold text-muted-foreground` label next to a `size-3.5` lucide icon as the header.
+- For a fixed, non-growing set of choices (e.g. the 11 languages in `LANGUAGES`), prefer an always-visible compact grid of chips/buttons over a `Select` dropdown — it avoids scrolling and is more scannable in a small popup. Reserve `Select` for open-ended or long/variable-length lists.
+- After any UI change, run the `app:verify` skill (build + lint + prettier) before considering it done, then confirm by loading `build/` unpacked in `chrome://extensions` — there's no automated UI test suite.

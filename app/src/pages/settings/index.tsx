@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
-import { DEFAULT_SETTINGS, ROUTES } from "@/config";
+import { ROUTES } from "@/config";
 import { useSettings } from "@/hooks";
-import type { Settings as SettingsType } from "@/types";
 import { ArrowLeft } from "lucide-react";
 import { LanguageSetting } from "./components/LanguageSetting";
 import { VolumeSetting } from "./components/VolumeSetting";
@@ -11,18 +10,7 @@ import { QuietHoursSetting } from "./components/QuietHoursSetting";
 
 export const SettingsPage = () => {
   const { settings, setSettings } = useSettings();
-  const [localSettings, setLocalSettings] = useState<SettingsType>(DEFAULT_SETTINGS);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setLocalSettings(settings);
-  }, [settings]);
-
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    await setSettings(localSettings);
-    navigate(ROUTES.HOME);
-  };
+  const [isTestPlaying, setIsTestPlaying] = useState(false);
 
   if (!settings) {
     return (
@@ -39,7 +27,7 @@ export const SettingsPage = () => {
   }
 
   return (
-    <form className="animate-in slide-in-from-right-50 duration-400" onSubmit={handleSubmit}>
+    <div className="animate-in slide-in-from-right-50 duration-400">
       <div className="p-5 flex items-center gap-4">
         <Button size="icon-sm" variant="ghost" className="bg-muted" asChild>
           <Link to={ROUTES.HOME}>
@@ -51,30 +39,24 @@ export const SettingsPage = () => {
 
       <div className="p-5 pt-0 flex flex-col gap-5">
         <LanguageSetting
-          value={localSettings.language}
-          onChange={(language) => setLocalSettings({ ...localSettings, language })}
+          value={settings.language}
+          disabled={isTestPlaying}
+          onChange={(language) => setSettings({ ...settings, language })}
         />
 
         <VolumeSetting
-          volume={localSettings.volume}
-          language={localSettings.language}
-          onChange={(volume) => setLocalSettings({ ...localSettings, volume })}
+          volume={settings.volume}
+          language={settings.language}
+          isPlaying={isTestPlaying}
+          onPlayingChange={setIsTestPlaying}
+          onChange={(volume) => setSettings({ ...settings, volume })}
         />
 
         <QuietHoursSetting
-          quietHours={localSettings.quietHours}
-          onChange={(quietHours) => setLocalSettings({ ...localSettings, quietHours })}
+          quietHours={settings.quietHours}
+          onChange={(quietHours) => setSettings({ ...settings, quietHours })}
         />
-
-        <div className="flex gap-4">
-          <Button type="button" className="flex-1" variant="outline" asChild size="lg">
-            <Link to={ROUTES.HOME}>Cancel</Link>
-          </Button>
-          <Button type="submit" className="flex-1" size="lg">
-            Save
-          </Button>
-        </div>
       </div>
-    </form>
+    </div>
   );
 };

@@ -42,8 +42,8 @@ export const HomePage = () => {
             Tap to activate hourly chimes
           </div>
           <Button
-            size="xl"
-            className="min-w-60"
+            size="lg"
+            className="min-w-40"
             onClick={() => setSettings({ ...settings, active: true })}
           >
             Activate
