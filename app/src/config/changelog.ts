@@ -1,0 +1,18 @@
+import type { ChangelogEntry } from "@/types";
+
+/**
+ * Shown to users as a "what's new" alert after 0hours updates. Not every
+ * release needs an entry — internal-only changes (refactors, tests, tooling)
+ * simply have none. Write for the user: what's useful or visible to them,
+ * never internal/code-level details.
+ */
+export const CHANGELOG: ChangelogEntry[] = [
+  {
+    version: "3.1.0",
+    date: "2026-08-05",
+    highlights: [
+      "0hours now shows a short summary of what's new right after it updates.",
+      "Added Chinese and Swedish as voice languages.",
+    ],
+  },
+];
