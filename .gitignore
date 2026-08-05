@@ -2,13 +2,14 @@
 **/node_modules/
 **/dist/
 **/build/
+**/coverage/
 
-# --- Python (для папки /voices) ---
+# --- Python (voices) ---
 .venv/
 **/__pycache__/
 *.py[cod]
 *$py.class
-voices/audio/   # Якщо хочеш генерувати аудіо локально і не комітити сотні MP3
+voices/audio/ 
 
 # --- Editor / IDE ---
 .vscode/
