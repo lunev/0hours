@@ -1,4 +1,4 @@
-import { isQuietNow, storage } from "@/lib";
+import { getDisplayHour, getSecondsToNextHour, shouldPlayChime, storage } from "@/lib";
 import { type Settings } from "@/types";
 
 /**
@@ -8,7 +8,7 @@ async function setupNextAlarm() {
   await chrome.alarms.clear("hourlyChime");
 
   const now = new Date();
-  const secondsToNextHour = (60 - now.getMinutes()) * 60 - now.getSeconds();
+  const secondsToNextHour = getSecondsToNextHour(now);
 
   chrome.alarms.create("hourlyChime", {
     when: Date.now() + secondsToNextHour * 1000,
@@ -28,41 +28,15 @@ chrome.runtime.onStartup.addListener(setupNextAlarm);
  */
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name === "hourlyChime") {
-    /**
-     * TIME DRIFT PROTECTION
-     * When a computer enters sleep mode, Chrome pauses the Service Worker.
-     * Upon waking up, Chrome triggers any "missed" alarms immediately.
-     * We calculate the 'drift' (difference between current time and scheduled time)
-     * to ensure we don't announce an outdated hour (e.g., announcing 2:00 PM at 2:25 PM).
-     */
-    const now = Date.now();
-    const drift = Math.abs(now - alarm.scheduledTime);
-    const ONE_MINUTE = 60 * 1000; // 60,000 milliseconds
-
-    if (drift > ONE_MINUTE) {
-      console.log(`Skipping delayed chime. Drift: ${Math.round(drift / 1000)}s`);
-      return; // Exit if the alarm is more than 60 seconds late
-    }
-
     // Retrieve user preferences from chrome.storage
     const settings = await storage.get<Settings>("settings");
 
     /**
-     * VALIDATION 1: Global Active State
-     * If the user has toggled the extension OFF in the UI, we abort.
+     * DECISION: should this chime actually play?
+     * Covers time drift after sleep/wake, the extension's active toggle,
+     * and the user's quiet hours window. See scheduling.ts for the logic.
      */
-    if (!settings || !settings.active) return;
-
-    /**
-     * VALIDATION 2: Silence Mode (Quiet Hours)
-     * Check if the current time falls within the user-defined 'Do Not Disturb' range.
-     */
-    if (settings.quietHours?.enabled) {
-      if (isQuietNow(settings.quietHours.start, settings.quietHours.end)) {
-        console.log("Silence mode active. Chime skipped.");
-        return;
-      }
-    }
+    if (!shouldPlayChime(settings, alarm.scheduledTime)) return;
 
     /**
      * ASSET PREPARATION
@@ -70,9 +44,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
      * 2. Convert to 12-hour format (e.g., 0 becomes 12, 13 becomes 1) to match audio file names.
      * 3. Construct the path to the localized MP3 asset.
      */
-    const date = new Date();
-    const hour = date.getHours();
-    const displayHour = hour % 12 || 12;
+    const displayHour = getDisplayHour(new Date().getHours());
 
     const lang = settings.language; // 'en' or 'uk'
     const volume = settings.volume / 100; // Convert 0-100 scale to 0.0-1.0
