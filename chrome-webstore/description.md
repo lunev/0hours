@@ -16,11 +16,11 @@ In a world of infinite scroll and deep-work sessions, it's remarkably easy to lo
 - **A gentle nudge to reset.** Use the hourly chime as a prompt to stand up, stretch, or hydrate — a recurring reset for your focus.
 - **Beautifully unobtrusive.** No pop-ups, no visual clutter. 0hours lives quietly in the background and only speaks when the hour turns.
 - **Quiet Hours, fully customizable.** Set your sleep or focus schedule so the extension stays silent exactly when you need stillness.
-- **A human touch.** Natural-sounding voice announcements across 11 languages — English, French, German, Italian, Japanese, Korean, Polish, Portuguese, Spanish, Turkish, and Ukrainian — for a warmer experience than a mechanical beep.
+- **A human touch.** Natural-sounding voice announcements across 13 languages — English, French, German, Italian, Japanese, Korean, Polish, Portuguese, Spanish, Swedish, Turkish, Ukrainian, and Chinese — for a warmer experience than a mechanical beep.
 
 ### Key features
 
-- Hourly voice announcements in 11 languages
+- Hourly voice announcements in 13 languages
 - Live countdown showing exactly how much time is left until the next chime
 - Customizable Quiet Hours so it never interrupts sleep or meetings
 - Clean, minimalist interface
