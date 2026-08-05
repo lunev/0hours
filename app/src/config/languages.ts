@@ -8,8 +8,10 @@ export const LANGUAGES = {
   pl: "Polish",
   pt: "Portuguese",
   es: "Spanish",
+  sv: "Swedish",
   tr: "Turkish",
   uk: "Ukrainian",
+  zh: "Chinese",
 } as const;
 
 export type LanguageType = keyof typeof LANGUAGES;
