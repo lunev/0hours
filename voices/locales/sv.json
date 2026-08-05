@@ -1,0 +1,17 @@
+{
+  "voice": "sv-SE-SofieNeural",
+  "hours": {
+    "1": "Klockan ett",
+    "2": "Klockan två",
+    "3": "Klockan tre",
+    "4": "Klockan fyra",
+    "5": "Klockan fem",
+    "6": "Klockan sex",
+    "7": "Klockan sju",
+    "8": "Klockan åtta",
+    "9": "Klockan nio",
+    "10": "Klockan tio",
+    "11": "Klockan elva",
+    "12": "Klockan tolv"
+  }
+}
