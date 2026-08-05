@@ -1,4 +1,5 @@
 import { getDisplayHour, getSecondsToNextHour, shouldPlayChime, storage } from "@/lib";
+import { STORAGE_KEYS } from "@/config";
 import { type Settings } from "@/types";
 
 /**
@@ -19,7 +20,19 @@ async function setupNextAlarm() {
 }
 
 // Lifecycle Events
-chrome.runtime.onInstalled.addListener(setupNextAlarm);
+chrome.runtime.onInstalled.addListener((details) => {
+  setupNextAlarm();
+
+  /**
+   * Flags that the "what's new" dialog should show next time the popup
+   * opens. Set on every extension update — including a manual "Update" or
+   * unpacked-reload click in chrome://extensions — no version comparison.
+   * Not set on a fresh install: a brand-new user has nothing to catch up on.
+   */
+  if (details.reason === "update") {
+    storage.set(STORAGE_KEYS.CHANGELOG_PENDING, true);
+  }
+});
 chrome.runtime.onStartup.addListener(setupNextAlarm);
 
 /**
