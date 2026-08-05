@@ -1,7 +1,7 @@
 /**
  * RESTORE PREVIOUS VERSION SCRIPT
  * * BEST PRACTICES & USAGE:
- * 1. Default: `npm run prev`       -> Restores the latest ZIP from /release to /build.
+ * 1. Default: `npm run prev`       -> Restores the latest ZIP from ../chrome-webstore/release to /build.
  * 2. Specific: `npm run prev 1.0.2` -> Searches for a file containing "1.0.2" and restores it.
  * 3. Workflow: Use this to compare current dev code with production or to debug old versions.
  * 4. Safety: This script WIPES the /build folder before unzipping to avoid "file ghosts".
@@ -17,7 +17,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const unzipPrev = async () => {
   const buildDir = path.resolve(__dirname, "..", "build");
-  const releaseDir = path.resolve(__dirname, "..", "release");
+  const releaseDir = path.resolve(__dirname, "..", "..", "chrome-webstore", "release");
 
   // npm run prev 1.0.2
   // targetVersion === 1.0.2

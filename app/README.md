@@ -38,7 +38,7 @@ There is no automated test suite — verification is manual via the steps above.
 npm run release
 ```
 
-Builds the extension and zips `build/` into `release/<slug>-v<version>.zip`, using the name/version from `public/manifest.json`.
+Builds the extension and zips `build/` into `../chrome-webstore/release/<slug>-v<version>.zip`, using the name/version from `public/manifest.json`.
 
 To compare against a previously released build:
 

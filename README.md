@@ -16,4 +16,4 @@ A Chrome extension (Manifest V3) that announces the time every hour, in your cho
   python3 generate_audio.py --lang pl  # a single language
   ```
 - **`design/`** — logo and promotional artwork source files (`.psd`).
-- **`chrome-webstore/`** — ready-to-submit Chrome Web Store assets: exported promo images (`assets/`), listing description, and reviewer testing instructions.
+- **`chrome-webstore/`** — ready-to-submit Chrome Web Store assets: exported promo images (`assets/`), listing description and reviewer testing instructions, and built release zips (`release/`, produced by `npm run release` in `app/`).
