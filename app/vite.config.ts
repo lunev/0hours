@@ -9,6 +9,12 @@ export default defineConfig({
 
   build: {
     outDir: "build",
+    // storage_keys.ts (and other shared modules) are pulled into both the popup and the
+    // background service worker entries, producing a chunk shared across those two
+    // "worlds". Chrome then logs a spurious "cross-world extension resource mismatch"
+    // warning for the popup's modulepreload of that chunk, so disable modulepreload
+    // injection rather than chase an unused-preload warning that has no real perf cost.
+    modulePreload: false,
     rollupOptions: {
       input: {
         popup: path.resolve(__dirname, "index.html"),

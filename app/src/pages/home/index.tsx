@@ -15,7 +15,7 @@ export const HomePage = () => {
   if (!settings || isLoading) return null;
 
   return (
-    <div className="py-13 px-10 flex flex-col justify-center items-center gap-5 animate-in slide-in-from-bottom-20 duration-500">
+    <div className="py-13 px-10 flex flex-col justify-center items-center gap-5">
       {/* Logo */}
       <div className="mb-7 select-none text-center relative">
         <span className="text-7xl font-bold tracking-tighter text-foreground">

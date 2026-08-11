@@ -8,6 +8,15 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.2.0",
+    date: "2026-08-11",
+    highlights: [
+      "Snappier navigation between the main screen and Settings, with no slide animation.",
+      "Refined the hover effect on buttons for a cleaner look.",
+      "Fixed the popup sometimes appearing wider than intended in Chrome.",
+    ],
+  },
+  {
     version: "3.1.0",
     date: "2026-08-05",
     highlights: [
