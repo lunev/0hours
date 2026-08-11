@@ -27,9 +27,9 @@ export const SettingsPage = () => {
   }
 
   return (
-    <div className="animate-in slide-in-from-right-50 duration-400">
+    <>
       <div className="p-5 flex items-center gap-4">
-        <Button size="icon-sm" variant="ghost" className="bg-muted" asChild>
+        <Button size="icon" variant="ghost" asChild>
           <Link to={ROUTES.HOME}>
             <ArrowLeft className="size-5" />
           </Link>
@@ -57,6 +57,6 @@ export const SettingsPage = () => {
           onChange={(quietHours) => setSettings({ ...settings, quietHours })}
         />
       </div>
-    </div>
+    </>
   );
 };

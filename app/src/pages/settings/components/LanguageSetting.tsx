@@ -29,7 +29,7 @@ export const LanguageSetting = ({ value, disabled, onChange }: LanguageSettingPr
               aria-pressed={isSelected}
               onClick={() => onChange(code as LanguageType)}
               className={cn(
-                "flex flex-col items-center gap-1 rounded-md border py-1 text-[10px] uppercase transition-colors disabled:pointer-events-none disabled:opacity-50",
+                "flex flex-col items-center gap-1 rounded-md border py-1 text-[10px] uppercase transition-colors disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
                 isSelected
                   ? "border border-primary/40 bg-primary/40 hover:bg-primary/50 dark:border dark:bg-primary/15 dark:hover:bg-transparent text-foreground"
                   : "border-border/40 bg-muted/30 text-muted-foreground hover:bg-primary/20 hover:text-foreground dark:hover:bg-transparent dark:hover:border-primary dark:hover:text-muted-foreground",
