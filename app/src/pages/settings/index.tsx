@@ -9,8 +9,12 @@ import { VolumeSetting } from "./components/VolumeSetting";
 import { QuietHoursSetting } from "./components/QuietHoursSetting";
 
 export const SettingsPage = () => {
-  const { settings, setSettings } = useSettings();
+  const { settings, setSettings, isLoading } = useSettings();
   const [isTestPlaying, setIsTestPlaying] = useState(false);
+
+  if (isLoading) {
+    return null;
+  }
 
   if (!settings) {
     return (
