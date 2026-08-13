@@ -8,7 +8,6 @@
     "watch": "vite build --mode development --watch",
     "build": "tsc -b && vite build",
     "release": "npm run build && node scripts/release.js",
-    "prev": "node scripts/buildPrev.js",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
   },
@@ -22,7 +21,6 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "country-flag-icons": "^1.6.20",
-    "extract-zip": "^2.0.1",
     "lucide-react": "^0.563.0",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.6.7",
