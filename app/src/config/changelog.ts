@@ -8,6 +8,11 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.4.0",
+    date: "2026-08-13",
+    highlights: ["Settings no longer briefly flashes English before showing your saved language."],
+  },
+  {
     version: "3.3.0",
     date: "2026-08-13",
     highlights: [
