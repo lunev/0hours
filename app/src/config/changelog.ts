@@ -8,6 +8,14 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.3.0",
+    date: "2026-08-13",
+    highlights: [
+      "Refreshed dark mode with new background, card, and text colors.",
+      "Made the selected language easier to spot in the language picker.",
+    ],
+  },
+  {
     version: "3.2.0",
     date: "2026-08-11",
     highlights: [
