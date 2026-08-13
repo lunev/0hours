@@ -40,14 +40,6 @@ npm run release
 
 Builds the extension and zips `build/` into `../chrome-webstore/releases/<slug>-v<version>.zip`, using the name/version from `public/manifest.json`.
 
-To compare against a previously released build:
-
-```bash
-npm run prev [version]
-```
-
-Wipes `build/` and restores it from a past release zip (optionally matching a specific version).
-
 ## Linting & formatting
 
 ```bash
