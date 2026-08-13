@@ -42,7 +42,7 @@ Run from `app/`:
 
 - The popup is narrow (`min-w-100` = 400px, see `app/src/assets/index.css`) and has no fixed height — settings cards should stay compact; prefer collapsing/hiding inactive sections over always-rendering grayed-out controls.
 - Icon-only buttons (e.g. play/stop, back arrow) must carry both `title` and `aria-label` since there's no visible text fallback.
-- Settings cards follow a consistent shape: `bg-card p-4 rounded-xl border border-border/40`, with an uppercase `text-[10px] tracking-widest font-bold text-muted-foreground` label next to a `size-3.5` lucide icon as the header.
+- Settings cards use the shared `Card` component (`app/src/components/ui/card.tsx`, installed via `npx shadcn add card` then customized to `bg-card p-4 flex flex-col gap-3 rounded-md shadow-sm dark:shadow-card border border-border/40`), with an uppercase `text-[10px] tracking-widest font-bold text-muted-foreground` label next to a `size-3.5` lucide icon as the header. `dark:shadow-card` depends on the `--card-shadow`/`--shadow-card` tokens in `src/assets/index.css` — copy those alongside `card.tsx` when porting it to another repo.
 - For a fixed, non-growing set of choices (e.g. the languages in `LANGUAGES`), prefer an always-visible compact grid of chips/buttons over a `Select` dropdown — it avoids scrolling and is more scannable in a small popup. Reserve `Select` for open-ended or long/variable-length lists.
 - After any UI change, run `npx eslint .`, `npx prettier --write .`, and `npm run build` (from `app/`) before considering it done, then confirm by loading `app/build/` unpacked in `chrome://extensions` — there's no automated UI test suite.
 

@@ -19,7 +19,7 @@ export const HomePage = () => {
       {/* Logo */}
       <div className="mb-7 select-none text-center relative">
         <span className="text-7xl font-bold tracking-tighter text-foreground">
-          <span className="inline-block -mr-3">0</span>
+          <span className="inline-block -mr-3 dark:text-white">0</span>
           <span className="inline-block text-primary">h</span>
         </span>
         {settings.active && isQuietHours && (
@@ -51,7 +51,7 @@ export const HomePage = () => {
         </>
       )}
 
-      <Button asChild variant="link" className="text-muted-foreground">
+      <Button asChild variant="link" className="text-muted-foreground dark:text-link">
         <Link to={ROUTES.SETTINGS}>Settings</Link>
       </Button>
     </div>

@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { BellOff } from "lucide-react";
@@ -10,7 +11,7 @@ type QuietHoursSettingProps = {
 
 export const QuietHoursSetting = ({ quietHours, onChange }: QuietHoursSettingProps) => {
   return (
-    <div className="bg-card p-4 flex flex-col gap-4 rounded-xl border border-border/40">
+    <Card>
       <div className="w-full flex gap-4">
         <div className="flex flex-1 items-center gap-2">
           <BellOff className="size-3.5 text-muted-foreground" />
@@ -46,6 +47,6 @@ export const QuietHoursSetting = ({ quietHours, onChange }: QuietHoursSettingPro
           />
         </div>
       )}
-    </div>
+    </Card>
   );
 };
