@@ -19,6 +19,7 @@ Run from `app/`:
 - `npm run dev` — Vite dev server for the popup UI only (background service worker / offscreen audio won't work in this mode).
 - `npm run watch` — `vite build --mode development --watch`; use this instead of `dev` when the background service worker needs to run.
 - `npm run build` — `tsc -b && vite build`, outputs to `app/build/`.
+- **When iterating on changes you want to see live, start `npm run watch` (or `npm run dev` for popup-only UI work) in the background for the session** — don't rely on a one-off `npm run build` at the end, since its output goes stale the moment you make another edit.
 - `npm run release` — builds then zips `app/build/` into `chrome-webstore/releases/<slug>-v<version>.zip` (name/version read from `app/public/manifest.json`) via `scripts/release.js`. This script is copy/paste-portable across the other extension repos in this account (the-duplicator, manage-x, parents-reminder) — keep it in sync if you improve it. Release zips are intentionally committed to git, alongside the rest of the Chrome Web Store submission assets.
 - No `lint`/`format` npm scripts exist. Lint with `npx eslint .`, format with `npx prettier --write .`.
 - `npm test` / `npm run test:coverage` run the Vitest suite (pure logic in `src/lib`, storage-backed hooks in `src/hooks`). It covers logic, not UI — verification of the actual popup still requires `npm run build` then loading `app/build/` unpacked via `chrome://extensions`.
