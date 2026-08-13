@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Play, SquareStopIcon, Volume1, Volume2, VolumeX } from "lucide-react";
 import { toggleTestSound } from "@/lib";
@@ -34,7 +35,7 @@ export const VolumeSetting = ({
   }, []);
 
   return (
-    <div className="bg-card p-4 flex flex-col gap-2 rounded-xl border border-border/40">
+    <Card>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <VolumeIcon className="size-3.5 text-muted-foreground" />
@@ -70,6 +71,6 @@ export const VolumeSetting = ({
         onValueChange={(vals) => onChange(vals[0])}
         className="py-2"
       />
-    </div>
+    </Card>
   );
 };

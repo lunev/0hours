@@ -52,14 +52,17 @@
 
 
 .dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(0.98 0 0);
+  --background: #202124;
+  --foreground: rgb(196, 199, 197);
 
-  --card: oklch(0.15 0 0);
+  --card: #292a2d;
   --card-foreground: oklch(0.98 0 0);
 
-  --popover: oklch(0.15 0 0);
+  --popover: #292a2d;
   --popover-foreground: oklch(0.98 0 0);
+
+  --link: rgb(168, 199, 250);
+  --card-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
 
   --primary: oklch(0.9 0.18 95);
   --primary-foreground: oklch(0.1 0 0);
@@ -106,6 +109,8 @@
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+  --color-link: var(--link);
+  --shadow-card: var(--card-shadow);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
