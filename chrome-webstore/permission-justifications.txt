@@ -1,0 +1,24 @@
+storage
+
+Used to save the user's settings (active toggle, voice language, volume, quiet hours, and muted
+pages) locally via chrome.storage.local, so preferences persist across browser restarts. Nothing
+is synced to a remote server or account.
+
+alarms
+
+Used to schedule the hourly chime via chrome.alarms, aligned to the top of each hour, so the
+extension can announce the time reliably from the background service worker even when the popup
+isn't open.
+
+offscreen
+
+Manifest V3 service workers cannot play audio directly. This permission is used to create an
+Offscreen Document with DOM access, which plays the chime and voice announcement audio.
+
+tabs
+
+The tabs permission is used to check the URL of the currently active tab when the hourly chime is
+about to play. This lets the optional "Muted Pages" feature skip the chime on pages the user has
+explicitly listed (e.g. a video call or focus tool). Only the active tab's URL is read, only at
+the moment the hourly alarm fires — no tab content is accessed, no browsing history is collected
+or transmitted, and nothing leaves the device.
