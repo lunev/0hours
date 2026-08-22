@@ -1,4 +1,5 @@
 import type { Settings } from "@/types";
+import { isPageMuted } from "./pageMatch";
 
 export const CHIME_DRIFT_THRESHOLD_MS = 60 * 1000;
 
@@ -46,12 +47,14 @@ export const isQuietNow = (start: string, end: string, now: Date = new Date()) =
 
 /**
  * Single decision point for whether the hourly chime should fire: not stale,
- * the extension is turned on, and we're not inside the user's quiet hours.
+ * the extension is turned on, we're not inside the user's quiet hours, and
+ * the active tab (if known) isn't on a muted page.
  */
 export const shouldPlayChime = (
   settings: Settings | null,
   scheduledTime: number,
   now: Date = new Date(),
+  activeTabUrl?: string | null,
 ): settings is Settings => {
   if (isChimeDrifted(scheduledTime, now.getTime())) return false;
   if (!settings || !settings.active) return false;
@@ -59,6 +62,9 @@ export const shouldPlayChime = (
     settings.quietHours?.enabled &&
     isQuietNow(settings.quietHours.start, settings.quietHours.end, now)
   ) {
+    return false;
+  }
+  if (settings.mutedPages?.enabled && isPageMuted(activeTabUrl, settings.mutedPages.patterns)) {
     return false;
   }
   return true;

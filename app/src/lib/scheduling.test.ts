@@ -125,6 +125,7 @@ describe("shouldPlayChime", () => {
     language: "en",
     volume: 100,
     quietHours: { enabled: false, start: "22:00", end: "08:00" },
+    mutedPages: { enabled: false, patterns: [] },
   };
   const now = new Date(2026, 0, 1, 14, 0, 0);
   const scheduledTime = now.getTime();
@@ -166,5 +167,37 @@ describe("shouldPlayChime", () => {
   it("ignores quiet hours window when quiet hours are disabled", () => {
     const quietNight = new Date(2026, 0, 1, 23, 0, 0);
     expect(shouldPlayChime(baseSettings, quietNight.getTime(), quietNight)).toBe(true);
+  });
+
+  it("does not play when the active tab matches a muted page", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(shouldPlayChime(settings, scheduledTime, now, "https://example.com/page")).toBe(false);
+  });
+
+  it("plays when muted pages are enabled but the active tab doesn't match", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(shouldPlayChime(settings, scheduledTime, now, "https://other.com")).toBe(true);
+  });
+
+  it("plays when muted pages are enabled but the active tab is unknown", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(shouldPlayChime(settings, scheduledTime, now, undefined)).toBe(true);
+  });
+
+  it("ignores the active tab when muted pages are disabled", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: false, patterns: ["example.com"] },
+    };
+    expect(shouldPlayChime(settings, scheduledTime, now, "https://example.com")).toBe(true);
   });
 });

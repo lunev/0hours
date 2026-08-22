@@ -42,14 +42,22 @@ chrome.runtime.onStartup.addListener(setupNextAlarm);
 chrome.alarms.onAlarm.addListener(async (alarm) => {
   if (alarm.name === "hourlyChime") {
     // Retrieve user preferences from chrome.storage
-    const settings = await storage.get<Settings>("settings");
+    const settings = await storage.get<Settings>(STORAGE_KEYS.SETTINGS);
+
+    // Only query the active tab when muted pages are actually configured —
+    // no need to pay for chrome.tabs.query otherwise.
+    let activeTabUrl: string | undefined;
+    if (settings?.mutedPages?.enabled && settings.mutedPages.patterns.length > 0) {
+      const [activeTab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+      activeTabUrl = activeTab?.url;
+    }
 
     /**
      * DECISION: should this chime actually play?
      * Covers time drift after sleep/wake, the extension's active toggle,
-     * and the user's quiet hours window. See scheduling.ts for the logic.
+     * the user's quiet hours window, and muted pages. See scheduling.ts.
      */
-    if (!shouldPlayChime(settings, alarm.scheduledTime)) return;
+    if (!shouldPlayChime(settings, alarm.scheduledTime, undefined, activeTabUrl)) return;
 
     /**
      * ASSET PREPARATION

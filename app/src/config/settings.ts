@@ -9,4 +9,8 @@ export const DEFAULT_SETTINGS: Settings = {
     start: "20:00",
     end: "09:00",
   },
+  mutedPages: {
+    enabled: false,
+    patterns: [],
+  },
 };

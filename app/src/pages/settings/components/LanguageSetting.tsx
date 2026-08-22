@@ -1,6 +1,7 @@
 import { LANGUAGES, LANGUAGE_FLAGS, type LanguageType } from "@/config";
 import { cn } from "@/lib";
 import { Card } from "@/components/ui/card";
+import { SettingInfo } from "@/components/setting-info";
 import { Languages } from "lucide-react";
 
 type LanguageSettingProps = {
@@ -17,6 +18,9 @@ export const LanguageSetting = ({ value, disabled, onChange }: LanguageSettingPr
         <label className="uppercase text-[10px] tracking-widest font-bold text-muted-foreground">
           Voice Language
         </label>
+        <SettingInfo label="Voice Language">
+          Choose the language and voice used to announce the hour.
+        </SettingInfo>
       </div>
       <fieldset disabled={disabled} className="grid grid-cols-9 gap-2">
         {Object.entries(LANGUAGES).map(([code, name]) => {

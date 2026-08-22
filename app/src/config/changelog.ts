@@ -8,6 +8,13 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.5.0",
+    date: "2026-08-22",
+    highlights: [
+      "Added Muted Pages — list sites where you don't want the hourly chime to interrupt you, and it'll stay quiet whenever that page is active.",
+    ],
+  },
+  {
     version: "3.4.0",
     date: "2026-08-13",
     highlights: ["Settings no longer briefly flashes English before showing your saved language."],

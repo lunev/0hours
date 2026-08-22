@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ROUTES } from "@/config";
 import { useSettings } from "@/hooks";
 import { ArrowLeft } from "lucide-react";
 import { LanguageSetting } from "./components/LanguageSetting";
 import { VolumeSetting } from "./components/VolumeSetting";
 import { QuietHoursSetting } from "./components/QuietHoursSetting";
+import { MutedPagesSetting } from "./components/MutedPagesSetting";
 
 export const SettingsPage = () => {
   const { settings, setSettings, isLoading } = useSettings();
@@ -33,11 +35,16 @@ export const SettingsPage = () => {
   return (
     <>
       <div className="p-5 flex items-center gap-4">
-        <Button size="icon" variant="ghost" asChild>
-          <Link to={ROUTES.HOME}>
-            <ArrowLeft className="size-5" />
-          </Link>
-        </Button>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button size="icon" variant="ghost" shape="pill" title="Back" aria-label="Back" asChild>
+              <Link to={ROUTES.HOME}>
+                <ArrowLeft className="size-5" />
+              </Link>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>Back</TooltipContent>
+        </Tooltip>
         <h1 className="text-xl font-semibold text-foreground">Settings</h1>
       </div>
 
@@ -59,6 +66,11 @@ export const SettingsPage = () => {
         <QuietHoursSetting
           quietHours={settings.quietHours}
           onChange={(quietHours) => setSettings({ ...settings, quietHours })}
+        />
+
+        <MutedPagesSetting
+          mutedPages={settings.mutedPages}
+          onChange={(mutedPages) => setSettings({ ...settings, mutedPages })}
         />
       </div>
     </>
