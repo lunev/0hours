@@ -34,7 +34,9 @@ export const HomePage = () => {
             language={settings?.language}
             volume={settings?.volume}
           />
-          <Button onClick={() => setSettings({ ...settings, active: false })}>Deactivate</Button>
+          <Button shape="pill" onClick={() => setSettings({ ...settings, active: false })}>
+            Deactivate
+          </Button>
         </>
       ) : (
         <>
@@ -43,6 +45,7 @@ export const HomePage = () => {
           </div>
           <Button
             size="lg"
+            shape="pill"
             className="min-w-40"
             onClick={() => setSettings({ ...settings, active: true })}
           >

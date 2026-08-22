@@ -9,4 +9,8 @@ export interface Settings {
     start: string;
     end: string;
   };
+  mutedPages: {
+    enabled: boolean;
+    patterns: string[];
+  };
 }
