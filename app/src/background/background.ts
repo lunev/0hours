@@ -1,4 +1,10 @@
-import { getDisplayHour, getSecondsToNextHour, shouldPlayChime, storage } from "@/lib";
+import {
+  getDisplayHour,
+  getSecondsToNextHour,
+  shouldPlayChime,
+  storage,
+  updateChimeBadge,
+} from "@/lib";
 import { STORAGE_KEYS } from "@/config";
 import { type Settings } from "@/types";
 
@@ -19,9 +25,37 @@ async function setupNextAlarm() {
   console.log(`Next chime scheduled in ${Math.floor(secondsToNextHour / 60)} minutes.`);
 }
 
+/**
+ * Ticks once a minute so the toolbar badge can catch a quiet-hours window
+ * opening or closing without waiting for the next hourly chime.
+ */
+async function setupBadgeTick() {
+  await chrome.alarms.clear("badgeTick");
+  chrome.alarms.create("badgeTick", { periodInMinutes: 1 });
+}
+
+/**
+ * Recomputes and applies the toolbar badge for the current moment: settings,
+ * the quiet hours window, and (only if muted pages are configured) the
+ * active tab's URL.
+ */
+async function refreshBadge() {
+  const settings = await storage.get<Settings>(STORAGE_KEYS.SETTINGS);
+
+  let activeTabUrl: string | undefined;
+  if (settings?.mutedPages?.enabled && settings.mutedPages.patterns.length > 0) {
+    const [activeTab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+    activeTabUrl = activeTab?.url;
+  }
+
+  await updateChimeBadge(settings, activeTabUrl);
+}
+
 // Lifecycle Events
 chrome.runtime.onInstalled.addListener((details) => {
   setupNextAlarm();
+  setupBadgeTick();
+  refreshBadge();
 
   /**
    * Flags that the "what's new" dialog should show next time the popup
@@ -33,13 +67,34 @@ chrome.runtime.onInstalled.addListener((details) => {
     storage.set(STORAGE_KEYS.CHANGELOG_PENDING, true);
   }
 });
-chrome.runtime.onStartup.addListener(setupNextAlarm);
+chrome.runtime.onStartup.addListener(() => {
+  setupNextAlarm();
+  setupBadgeTick();
+  refreshBadge();
+});
+
+// Live badge inputs: the active tab (for Muted Pages) changing by switch or navigation.
+chrome.tabs.onActivated.addListener(() => {
+  refreshBadge();
+});
+chrome.tabs.onUpdated.addListener((_tabId, changeInfo, tab) => {
+  if (tab.active && changeInfo.url) refreshBadge();
+});
+// ...and settings themselves changing (e.g. toggling active/quietHours/mutedPages in the popup).
+chrome.storage.onChanged.addListener((changes, areaName) => {
+  if (areaName === "local" && changes[STORAGE_KEYS.SETTINGS]) refreshBadge();
+});
 
 /**
  * Listen for scheduled alarms.
  * Since this is a Service Worker, it wakes up specifically to handle this event.
  */
 chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name === "badgeTick") {
+    await refreshBadge();
+    return;
+  }
+
   if (alarm.name === "hourlyChime") {
     // Retrieve user preferences from chrome.storage
     const settings = await storage.get<Settings>(STORAGE_KEYS.SETTINGS);

@@ -1,3 +1,4 @@
+export * from "./badge";
 export * from "./changelog";
 export * from "./pageMatch";
 export * from "./scheduling";

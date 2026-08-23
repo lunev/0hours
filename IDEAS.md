@@ -21,3 +21,18 @@ boundary) — new background-worker plumbing beyond what exists today.
 
 **Open question:** should the badge reflect Silence Mode only, Muted Pages only, or both combined
 (and if both, how to distinguish which reason in the badge/tooltip)?
+
+## Contact / report a bug link
+
+No way today for a user to reach the developer with a bug report or question — the Chrome Web
+Store listing doesn't surface a contact channel, and nothing in the extension itself points
+anywhere.
+
+**Approach:** simplest option is a link (Settings page, most likely near the bottom) to an
+external hosted form — a Google Form is the obvious low-effort choice, no backend/storage to
+build or maintain. Exact placement and whether it's a "Contact us" vs. "Report a bug" framing is
+still open.
+
+**Open question:** should the link prefill any context automatically (extension version from
+`manifest.json`, browser) so reports come in with useful debugging info by default, or is a bare
+link enough to start?
