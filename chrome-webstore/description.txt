@@ -17,6 +17,7 @@ KEY FEATURES
 - Live countdown showing exactly how much time is left until the next chime
 - Customizable Quiet Hours so it never interrupts sleep or meetings
 - Muted Pages so the chime skips sites you list, like video calls or focus tools
+- Toolbar badge shows at a glance when the chime is silenced, and why
 - Clean, minimalist interface
 - Zero tracking — everything runs locally in your browser
 
