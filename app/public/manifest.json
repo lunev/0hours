@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "version": "3.6.0",
+  "version": "3.7.0",
   "name": "0hours — Talking Clock & Hourly Time Announcer",
   "description": "A talking clock that announces the time every hour, in your choice of voice and language.",
   "homepage_url": "https://lunevdev.com/projects/0hours",

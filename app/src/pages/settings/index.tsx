@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { ROUTES } from "@/config";
 import { useSettings } from "@/hooks";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MessageCircleQuestion } from "lucide-react";
 import { LanguageSetting } from "./components/LanguageSetting";
 import { VolumeSetting } from "./components/VolumeSetting";
 import { QuietHoursSetting } from "./components/QuietHoursSetting";
@@ -34,18 +34,49 @@ export const SettingsPage = () => {
 
   return (
     <>
-      <div className="p-5 flex items-center gap-4">
+      <div className="p-5 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                shape="pill"
+                title="Back"
+                aria-label="Back"
+                asChild
+              >
+                <Link to={ROUTES.HOME}>
+                  <ArrowLeft className="size-5" />
+                </Link>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Back</TooltipContent>
+          </Tooltip>
+          <h1 className="text-xl font-semibold text-foreground">Settings</h1>
+        </div>
+
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button size="icon" variant="ghost" shape="pill" title="Back" aria-label="Back" asChild>
-              <Link to={ROUTES.HOME}>
-                <ArrowLeft className="size-5" />
-              </Link>
+            <Button
+              size="icon"
+              variant="ghost"
+              shape="pill"
+              title="Feedback"
+              aria-label="Feedback"
+              asChild
+            >
+              <a
+                href="https://chromewebstore.google.com/detail/0hours-—-talking-clock-ho/gjkpcdjhkpjjehejhieaibmekliiemic/support"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MessageCircleQuestion className="size-5" />
+              </a>
             </Button>
           </TooltipTrigger>
-          <TooltipContent>Back</TooltipContent>
+          <TooltipContent>Feedback</TooltipContent>
         </Tooltip>
-        <h1 className="text-xl font-semibold text-foreground">Settings</h1>
       </div>
 
       <div className="p-5 pt-0 flex flex-col gap-5">

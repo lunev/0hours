@@ -8,6 +8,13 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.7.0",
+    date: "2026-08-23",
+    highlights: [
+      "Added a Feedback icon in Settings that opens the Chrome Web Store support page to ask a question, suggest something, or report a problem.",
+    ],
+  },
+  {
     version: "3.6.0",
     date: "2026-08-23",
     highlights: [
