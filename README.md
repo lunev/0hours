@@ -73,6 +73,20 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 3.6.0 - 2026-08-23
+- Added a toolbar badge (with icon and tooltip) that shows at a glance when the chime is off, silenced by quiet hours, or muted for the current page.
+- The main screen now shows a "Page Muted" label when the active tab is on your muted-pages list, matching the existing Silent Mode indicator.
+
+### 3.5.0 - 2026-08-22
+- Added Muted Pages — list sites where you don't want the hourly chime to interrupt you, and it'll stay quiet whenever that page is active.
+
+### 3.4.0 - 2026-08-13
+- Settings no longer briefly flashes English before showing your saved language.
+
+### 3.3.0 - 2026-08-13
+- Refreshed dark mode with new background, card, and text colors.
+- Made the selected language easier to spot in the language picker.
+
 ### 3.2.0 - 2026-08-11
 - Snappier navigation between the main screen and Settings, with no slide animation.
 - Refined the hover effect on buttons for a cleaner look.

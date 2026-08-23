@@ -69,3 +69,29 @@ export const shouldPlayChime = (
   }
   return true;
 };
+
+export type ChimeBadgeState = "off" | "chiming" | "quiet-hours" | "muted-page";
+
+/**
+ * Live badge state for the toolbar icon: which of the (mutually exclusive,
+ * for badge purposes) reasons explains whether the next chime will play.
+ * Quiet hours takes priority over muted pages when both apply, since it's
+ * the broader, time-based reason rather than a single tab's.
+ */
+export const getChimeBadgeState = (
+  settings: Settings | null,
+  now: Date = new Date(),
+  activeTabUrl?: string | null,
+): ChimeBadgeState => {
+  if (!settings || !settings.active) return "off";
+  if (
+    settings.quietHours.enabled &&
+    isQuietNow(settings.quietHours.start, settings.quietHours.end, now)
+  ) {
+    return "quiet-hours";
+  }
+  if (settings.mutedPages.enabled && isPageMuted(activeTabUrl, settings.mutedPages.patterns)) {
+    return "muted-page";
+  }
+  return "chiming";
+};

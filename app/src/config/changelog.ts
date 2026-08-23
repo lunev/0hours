@@ -8,6 +8,14 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.6.0",
+    date: "2026-08-23",
+    highlights: [
+      "Added a toolbar badge showing at a glance when the chime is off, silenced by quiet hours, or muted on the current page.",
+      'The main screen now shows "Page Muted" when the active tab is on your muted-pages list.',
+    ],
+  },
+  {
     version: "3.5.0",
     date: "2026-08-22",
     highlights: [

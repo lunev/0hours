@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { Settings } from "@/types";
 import {
   CHIME_DRIFT_THRESHOLD_MS,
+  getChimeBadgeState,
   getDisplayHour,
   getSecondsToNextHour,
   isChimeDrifted,
@@ -199,5 +200,81 @@ describe("shouldPlayChime", () => {
       mutedPages: { enabled: false, patterns: ["example.com"] },
     };
     expect(shouldPlayChime(settings, scheduledTime, now, "https://example.com")).toBe(true);
+  });
+});
+
+describe("getChimeBadgeState", () => {
+  const baseSettings: Settings = {
+    active: true,
+    language: "en",
+    volume: 100,
+    quietHours: { enabled: false, start: "22:00", end: "08:00" },
+    mutedPages: { enabled: false, patterns: [] },
+  };
+  const now = new Date(2026, 0, 1, 14, 0, 0);
+
+  it("is off when settings haven't loaded yet", () => {
+    expect(getChimeBadgeState(null, now)).toBe("off");
+  });
+
+  it("is off when the extension is turned off", () => {
+    expect(getChimeBadgeState({ ...baseSettings, active: false }, now)).toBe("off");
+  });
+
+  it("is off even when quiet hours or muted pages would otherwise apply", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      active: false,
+      quietHours: { enabled: true, start: "00:00", end: "23:59" },
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(getChimeBadgeState(settings, now, "https://example.com")).toBe("off");
+  });
+
+  it("is chiming when active and nothing mutes it", () => {
+    expect(getChimeBadgeState(baseSettings, now)).toBe("chiming");
+  });
+
+  it("is quiet-hours when active and inside the quiet hours window", () => {
+    const quietNight = new Date(2026, 0, 1, 23, 0, 0);
+    const settings: Settings = {
+      ...baseSettings,
+      quietHours: { enabled: true, start: "22:00", end: "08:00" },
+    };
+    expect(getChimeBadgeState(settings, quietNight)).toBe("quiet-hours");
+  });
+
+  it("is chiming outside the quiet hours window even when enabled", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      quietHours: { enabled: true, start: "22:00", end: "08:00" },
+    };
+    expect(getChimeBadgeState(settings, now)).toBe("chiming");
+  });
+
+  it("is muted-page when active and the active tab matches a muted page", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(getChimeBadgeState(settings, now, "https://example.com/page")).toBe("muted-page");
+  });
+
+  it("is chiming when muted pages are enabled but the active tab doesn't match", () => {
+    const settings: Settings = {
+      ...baseSettings,
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(getChimeBadgeState(settings, now, "https://other.com")).toBe("chiming");
+  });
+
+  it("prefers quiet-hours over muted-page when both apply", () => {
+    const quietNight = new Date(2026, 0, 1, 23, 0, 0);
+    const settings: Settings = {
+      ...baseSettings,
+      quietHours: { enabled: true, start: "22:00", end: "08:00" },
+      mutedPages: { enabled: true, patterns: ["example.com"] },
+    };
+    expect(getChimeBadgeState(settings, quietNight, "https://example.com")).toBe("quiet-hours");
   });
 });

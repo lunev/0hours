@@ -1,16 +1,21 @@
 import { NextChime } from "@/pages/home/components/NextChime";
 import { Button } from "@/components/ui/button";
-import { useSettings } from "@/hooks";
+import { useActiveTabUrl, useSettings } from "@/hooks";
 import { Link } from "react-router";
 import { ROUTES } from "@/config";
-import { isQuietNow } from "@/lib";
-import { Moon } from "lucide-react";
+import { isPageMuted, isQuietNow } from "@/lib";
+import { BellOff, Moon } from "lucide-react";
 
 export const HomePage = () => {
   const { settings, setSettings, isLoading } = useSettings();
+  const activeTabUrl = useActiveTabUrl();
   const isQuietHours =
     settings?.quietHours?.enabled &&
     isQuietNow(settings?.quietHours?.start, settings?.quietHours?.end);
+  const isMutedPage =
+    !isQuietHours &&
+    settings?.mutedPages?.enabled &&
+    isPageMuted(activeTabUrl, settings?.mutedPages?.patterns ?? []);
 
   if (!settings || isLoading) return null;
 
@@ -25,12 +30,16 @@ export const HomePage = () => {
         {settings.active && isQuietHours && (
           <Moon className="absolute -top-2 -right-6 size-6 text-primary" />
         )}
+        {settings.active && isMutedPage && (
+          <BellOff className="absolute -top-2 -right-6 size-6 text-primary" />
+        )}
       </div>
 
       {settings.active ? (
         <>
           <NextChime
             isQuietTime={isQuietHours}
+            isMutedPage={isMutedPage}
             language={settings?.language}
             volume={settings?.volume}
           />
