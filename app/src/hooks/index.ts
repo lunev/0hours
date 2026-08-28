@@ -4,3 +4,4 @@ export * from "./useChangelogUpdate";
 export * from "./useCurrentTabHost";
 export * from "./useActiveTabUrl";
 export * from "./useNextHourCountdown";
+export * from "./useFloatingPopup";
