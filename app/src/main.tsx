@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider.tsx";
 import { ChangelogDialog } from "@/components/changelog-dialog.tsx";
+import { SupportPopup } from "@/components/support-popup.tsx";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ROUTES } from "@/config";
 import { HomePage } from "@/pages/home";
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
     <ThemeProvider storageKey="vite-ui-theme">
       <TooltipProvider>
         <ChangelogDialog />
+        <SupportPopup />
         <HashRouter>
           <Routes>
             <Route index element={<HomePage />} />

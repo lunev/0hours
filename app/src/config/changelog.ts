@@ -8,6 +8,13 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.8.0",
+    date: "2026-08-28",
+    highlights: [
+      "Added an occasional dismissible prompt in the corner of the popup, offering another quick way to reach the Chrome Web Store support page.",
+    ],
+  },
+  {
     version: "3.7.0",
     date: "2026-08-23",
     highlights: [

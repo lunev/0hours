@@ -73,6 +73,10 @@ Google Chrome on Windows and Mac.
 
 All notable user-facing changes are listed here. Internal work like dependency upgrades, refactors, and build tooling is left out.
 
+### 3.8.0 - 2026-08-28
+
+- Added an occasional dismissible prompt in the corner of the popup — another quick way to ask a question, make a suggestion, or report a problem via the Chrome Web Store support page.
+
 ### 3.7.0 - 2026-08-23
 
 - Added a Feedback icon in Settings that opens the Chrome Web Store support page, so you can ask a question, make a suggestion, or report a problem directly.
