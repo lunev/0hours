@@ -1,0 +1,17 @@
+{
+  "voice": "ro-RO-AlinaNeural",
+  "hours": {
+    "1": "Ora unu",
+    "2": "Ora două",
+    "3": "Ora trei",
+    "4": "Ora patru",
+    "5": "Ora cinci",
+    "6": "Ora șase",
+    "7": "Ora șapte",
+    "8": "Ora opt",
+    "9": "Ora nouă",
+    "10": "Ora zece",
+    "11": "Ora unsprezece",
+    "12": "Ora douăsprezece"
+  }
+}

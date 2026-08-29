@@ -60,6 +60,7 @@ type FloatingPopupProps = {
   icon?: ReactNode;
   position?: FloatingPopupPosition;
   className?: string;
+  onVisibleChange?: (visible: boolean) => void;
 };
 
 export const FloatingPopup = ({
@@ -71,11 +72,16 @@ export const FloatingPopup = ({
   icon,
   position = "bottom-right",
   className,
+  onVisibleChange,
 }: FloatingPopupProps) => {
   const { visible, dismiss } = useFloatingPopup({ storageKey, intervalDays });
   const isAnimated = messages.length > 1;
   const typedMessage = useMessageCycle(visible && isAnimated ? messages : []);
   const displayedMessage = isAnimated ? typedMessage : (messages[0] ?? "");
+
+  useEffect(() => {
+    onVisibleChange?.(visible);
+  }, [visible, onVisibleChange]);
 
   if (!visible) return null;
 

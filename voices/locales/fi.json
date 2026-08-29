@@ -1,0 +1,17 @@
+{
+  "voice": "fi-FI-NooraNeural",
+  "hours": {
+    "1": "Kello yksi",
+    "2": "Kello kaksi",
+    "3": "Kello kolme",
+    "4": "Kello neljä",
+    "5": "Kello viisi",
+    "6": "Kello kuusi",
+    "7": "Kello seitsemän",
+    "8": "Kello kahdeksan",
+    "9": "Kello yhdeksän",
+    "10": "Kello kymmenen",
+    "11": "Kello yksitoista",
+    "12": "Kello kaksitoista"
+  }
+}

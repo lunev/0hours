@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -49,7 +49,6 @@
   --sidebar-border: oklch(0.88 0 0);
   --sidebar-ring: oklch(0.75 0.16 95);
 }
-
 
 .dark {
   --background: #202124;
@@ -148,8 +147,8 @@
 
 @layer base {
   @font-face {
-    font-family: 'Geist';
-    src: url('./fonts/Geist/Geist-VariableFont_wght.ttf') format('truetype');
+    font-family: "Geist";
+    src: url("./fonts/Geist/Geist-VariableFont_wght.ttf") format("truetype");
     font-weight: 200 1000;
     font-style: normal;
     font-display: swap;
@@ -160,7 +159,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-display
+    @apply bg-background text-foreground font-display;
   }
 
   html,

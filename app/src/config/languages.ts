@@ -12,6 +12,16 @@ export const LANGUAGES = {
   tr: "Turkish",
   uk: "Ukrainian",
   zh: "Chinese",
+  ar: "Arabic",
+  bn: "Bengali",
+  fi: "Finnish",
+  id: "Indonesian",
+  ka: "Georgian",
+  my: "Burmese",
+  ne: "Nepali",
+  ro: "Romanian",
+  si: "Sinhala",
+  ur: "Urdu",
 } as const;
 
 export type LanguageType = keyof typeof LANGUAGES;

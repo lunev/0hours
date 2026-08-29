@@ -8,6 +8,13 @@ import type { ChangelogEntry } from "@/types";
  */
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "3.9.0",
+    date: "2026-08-29",
+    highlights: [
+      "Added Arabic, Bengali, Finnish, Indonesian, Georgian, Burmese, Nepali, Romanian, Sinhala, and Urdu as voice languages.",
+    ],
+  },
+  {
     version: "3.8.0",
     date: "2026-08-28",
     highlights: [

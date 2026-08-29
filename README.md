@@ -15,7 +15,7 @@
 ## Features
 
 - **Hourly announcements** — announces the current hour aloud, once per hour, on the hour.
-- **13 languages** — German, English, Spanish, French, Italian, Japanese, Korean, Polish, Portuguese, Swedish, Turkish, Ukrainian, and Chinese.
+- **23 languages** — German, English, Spanish, French, Italian, Japanese, Korean, Polish, Portuguese, Swedish, Turkish, Ukrainian, Chinese, Arabic, Bengali, Finnish, Indonesian, Georgian, Burmese, Nepali, Romanian, Sinhala, and Urdu.
 - **Adjustable volume and quiet hours.**
 - **Stale-hour protection** — skips the announcement if the alarm fires more than 60 seconds late (e.g. after the machine wakes from sleep), instead of announcing the wrong hour.
 
@@ -76,6 +76,10 @@ All notable user-facing changes are listed here. Internal work like dependency u
 ### 3.8.0 - 2026-08-28
 
 - Added an occasional dismissible prompt in the corner of the popup — another quick way to ask a question, make a suggestion, or report a problem via the Chrome Web Store support page.
+
+### 3.9.0 - 2026-08-29
+
+- Added Arabic, Bengali, Finnish, Indonesian, Georgian, Burmese, Nepali, Romanian, Sinhala, and Urdu as voice languages.
 
 ### 3.7.0 - 2026-08-23
 

@@ -1,4 +1,28 @@
-import { CN, DE, ES, FR, GB, IT, JP, KR, PL, PT, SE, TR, UA } from "country-flag-icons/react/3x2";
+import {
+  BD,
+  CN,
+  DE,
+  ES,
+  FI,
+  FR,
+  GB,
+  GE,
+  ID,
+  IT,
+  JP,
+  KR,
+  LK,
+  MM,
+  NP,
+  PK,
+  PL,
+  PT,
+  RO,
+  SA,
+  SE,
+  TR,
+  UA,
+} from "country-flag-icons/react/3x2";
 import type { LanguageType } from "./languages";
 
 export const LANGUAGE_FLAGS: Record<
@@ -18,4 +42,14 @@ export const LANGUAGE_FLAGS: Record<
   tr: TR,
   uk: UA,
   zh: CN,
+  ar: SA,
+  bn: BD,
+  fi: FI,
+  id: ID,
+  ka: GE,
+  my: MM,
+  ne: NP,
+  ro: RO,
+  si: LK,
+  ur: PK,
 };
