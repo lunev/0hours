@@ -1,0 +1,17 @@
+{
+  "voice": "id-ID-GadisNeural",
+  "hours": {
+    "1": "Pukul satu",
+    "2": "Pukul dua",
+    "3": "Pukul tiga",
+    "4": "Pukul empat",
+    "5": "Pukul lima",
+    "6": "Pukul enam",
+    "7": "Pukul tujuh",
+    "8": "Pukul delapan",
+    "9": "Pukul sembilan",
+    "10": "Pukul sepuluh",
+    "11": "Pukul sebelas",
+    "12": "Pukul dua belas"
+  }
+}

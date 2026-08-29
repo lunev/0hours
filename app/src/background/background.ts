@@ -118,13 +118,13 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
      * ASSET PREPARATION
      * 1. Get current hour (0-23).
      * 2. Convert to 12-hour format (e.g., 0 becomes 12, 13 becomes 1) to match audio file names.
-     * 3. Construct the path to the localized MP3 asset.
+     * 3. Construct the path to the localized WebM/Opus asset.
      */
     const displayHour = getDisplayHour(new Date().getHours());
 
     const lang = settings.language; // 'en' or 'uk'
     const volume = settings.volume / 100; // Convert 0-100 scale to 0.0-1.0
-    const filePath = `audio/${lang}/${displayHour}.mp3`;
+    const filePath = `audio/${lang}/${displayHour}.webm`;
 
     console.log(`Playing chime: ${lang.toUpperCase()} version for ${displayHour} o'clock.`);
 

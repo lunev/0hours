@@ -28,8 +28,8 @@ export const toggleTestSound = (
   }
 
   const displayHour = getDisplayHour(new Date().getHours());
-  const filePath = `/audio/${language}/${displayHour}.mp3`;
-  const bipPath = `/audio/bip.mp3`;
+  const filePath = `/audio/${language}/${displayHour}.webm`;
+  const bipPath = `/audio/bip.webm`;
 
   bipRef.current = new Audio(bipPath);
   voiceRef.current = new Audio(filePath);

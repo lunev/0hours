@@ -13,7 +13,7 @@ In a world of infinite scroll and deep-work sessions, it's remarkably easy to lo
 
 KEY FEATURES
 
-- Hourly voice announcements in 13 languages
+- Hourly voice announcements in 23 languages
 - Live countdown showing exactly how much time is left until the next chime
 - Customizable Quiet Hours so it never interrupts sleep or meetings
 - Muted Pages so the chime skips sites you list, like video calls or focus tools

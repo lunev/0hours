@@ -1,7 +1,11 @@
 import { MessageCircleQuestion } from "lucide-react";
 import { FloatingPopup } from "@/components/floating-popup";
 
-export const SupportPopup = () => (
+type SupportPopupProps = {
+  onVisibleChange?: (visible: boolean) => void;
+};
+
+export const SupportPopup = ({ onVisibleChange }: SupportPopupProps) => (
   <FloatingPopup
     storageKey="supportPopupDismissedAt"
     intervalDays={14}
@@ -13,5 +17,6 @@ export const SupportPopup = () => (
     ]}
     linkText="Get support here"
     linkHref="https://chromewebstore.google.com/detail/gjkpcdjhkpjjehejhieaibmekliiemic/support"
+    onVisibleChange={onVisibleChange}
   />
 );

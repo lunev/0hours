@@ -16,7 +16,7 @@ chrome.runtime.onMessage.addListener((message) => {
     const volume = message.volume !== undefined ? message.volume : 1;
 
     // 2. Initialize Audio objects
-    const bip = new Audio("audio/bip.mp3");
+    const bip = new Audio("audio/bip.webm");
     const voice = new Audio(message.voicePath);
 
     // Apply volume settings
