@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - `app/` — the entire buildable project: `package.json`, source, config, build scripts. **Run all npm commands from inside `app/`, not the repo root.**
 - `voices/` — Python tooling that generates the spoken-hour audio files consumed by the extension (`app/public/audio/<lang>/<hour>.mp3`), using [edge-tts](https://github.com/rany2/edge-tts). Each language is configured in `voices/locales/<lang>.json` (voice name + hour phrases).
-- `design/` — logo and promotional artwork source files (`.psd`), not part of the build.
+- `design/` — logo and promotional artwork, not part of the build. `.psd` sources are gitignored (large) and live only on the maintainer's machine.
 - `chrome-webstore/` — Chrome Web Store listing material: `releases/` (committed release zips), `description.txt` (store description, plain text), `testing-instructions.txt` (reviewer testing steps, plain text), `assets/` (exported promo images).
 - `site/` — public landing page: a static Vite + React SPA with its own `package.json` (run its npm commands from inside `site/`: `npm run dev`, `npm run build`). Copy lives in `site/src/content.ts`; keep it in sync by hand with `chrome-webstore/description.txt`. `.github/workflows/pages.yml` deploys it to https://lunev.github.io/0hours/ on pushes to `main` that touch `site/`. Needs a public repo with Settings → Pages → Source set to "GitHub Actions", and `base` in `site/vite.config.ts` must equal the repo name.
 

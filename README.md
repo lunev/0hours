@@ -62,7 +62,7 @@ See [`CLAUDE.md`](CLAUDE.md) for repo layout and other conventions.
   python3 generate_audio.py            # all languages
   python3 generate_audio.py --lang pl  # a single language
   ```
-- **`design/`** — logo and promotional artwork source files (`.psd`), not part of the build.
+- **`design/`** — logo and promotional artwork, not part of the build. `.psd` sources are gitignored.
 - **`chrome-webstore/`** — ready-to-submit Chrome Web Store assets: exported promo images (`assets/`), listing description and reviewer testing instructions, and built release zips (`releases/`, produced by `npm run release` in `app/`).
 
 ## Compatibility
