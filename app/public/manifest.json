@@ -3,7 +3,7 @@
   "version": "3.9.0",
   "name": "0hours — Talking Clock & Hourly Time Announcer",
   "description": "A talking clock that announces the time every hour, in your choice of voice and language.",
-  "homepage_url": "https://lunevdev.com/projects/0hours",
+  "homepage_url": "https://lunev.github.io/0hours/",
   "permissions": ["storage", "alarms", "offscreen", "tabs"],
   "background": {
     "service_worker": "background.js",
