@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://lunevdev.com/projects/0hours">Project page</a>
+  <a href="https://lunev.github.io/0hours/">Website</a> · <a href="https://chromewebstore.google.com/detail/gjkpcdjhkpjjehejhieaibmekliiemic">Chrome Web Store</a>
 </p>
 
 ## Features
