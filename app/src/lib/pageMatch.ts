@@ -1,14 +1,25 @@
 /**
+ * Strips trailing slashes with a linear scan. A `/\/+$/` regex would be quadratic on
+ * strings with many non-trailing slashes (URLs are attacker-controlled input).
+ */
+const stripTrailingSlashes = (value: string): string => {
+  let end = value.length;
+  while (end > 0 && value[end - 1] === "/") end--;
+  return value.slice(0, end);
+};
+
+/**
  * Normalizes a URL or user-entered pattern for comparison: lowercase, strip
  * scheme, strip leading www., strip trailing slash(es).
  */
 export const normalizeForMatch = (value: string): string =>
-  value
-    .trim()
-    .toLowerCase()
-    .replace(/^[a-z][a-z0-9+.-]*:\/\//, "")
-    .replace(/^www\./, "")
-    .replace(/\/+$/, "");
+  stripTrailingSlashes(
+    value
+      .trim()
+      .toLowerCase()
+      .replace(/^[a-z][a-z0-9+.-]*:\/\//, "")
+      .replace(/^www\./, ""),
+  );
 
 /**
  * True when `url` matches `pattern`. A pattern containing "/" is treated as

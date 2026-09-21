@@ -20,6 +20,22 @@ describe("normalizeForMatch", () => {
     expect(normalizeForMatch("example.com//")).toBe("example.com");
   });
 
+  it("keeps slashes that are not trailing", () => {
+    expect(normalizeForMatch("example.com//path/")).toBe("example.com//path");
+  });
+
+  it("reduces a slash-only string to empty", () => {
+    expect(normalizeForMatch("///")).toBe("");
+  });
+
+  it("stays linear on URLs with many non-trailing slashes", () => {
+    // A `/\/+$/` regex takes several seconds on this input (quadratic backtracking).
+    const hostile = `https://example.com${"/".repeat(200_000)}x`;
+    const start = performance.now();
+    expect(normalizeForMatch(hostile)).toBe(`example.com${"/".repeat(200_000)}x`);
+    expect(performance.now() - start).toBeLessThan(1000);
+  });
+
   it("trims whitespace", () => {
     expect(normalizeForMatch("  example.com  ")).toBe("example.com");
   });
