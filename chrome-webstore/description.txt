@@ -22,3 +22,5 @@ KEY FEATURES
 - Zero tracking — everything runs locally in your browser
 
 Stop losing hours to the void of the internet. Install 0hours today and sync your digital life with the rhythm of real time.
+
+Open source on GitHub: github.com/lunev/0hours
