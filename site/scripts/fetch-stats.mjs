@@ -7,12 +7,18 @@ const contentPath = new URL("../src/content.ts", import.meta.url);
 const statsPath = new URL("../src/stats.json", import.meta.url);
 
 function stripTags(html) {
-  return html
-    .replace(/<script[\s\S]*?<\/script>/gi, " ")
-    .replace(/<style[\s\S]*?<\/style>/gi, " ")
-    .replace(/<[^>]+>/g, "")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ");
+  let previous;
+  let current = html;
+  do {
+    previous = current;
+    current = current
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&nbsp;/g, " ")
+      .replace(/\s+/g, " ");
+  } while (current !== previous);
+  return current;
 }
 
 function parseUsers(html) {
